@@ -1,4 +1,4 @@
-# tensorflow_save_and_restore_models
+# Tensorflow_Save_And_Restore_Models
 Different ways and usage of save and restore trained models using tensorflow
 
 There are several different ways of dumping a TensorFlow graph into a file and then loading it into another program, this project provides clear examples/information on how they work:
@@ -19,4 +19,6 @@ There are several different ways of dumping a TensorFlow graph into a file and t
 *[Tensorflow APIs](https://www.tensorflow.org/versions/r0.9/api_docs/index.html)
 
 *[freeze_graph](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/tools/freeze_graph.py)
+
+*[tf_restore_graph.py](https://gist.github.com/nikitakit/6ef3b72be67b86cb7868)
 
