@@ -16,16 +16,13 @@ There are several different ways of dumping a TensorFlow graph into a file and t
 
 ## Refrences:
 * [TensorFlow saving into/loading a graph from a file](http://stackoverflow.com/questions/38947658/tensorflow-saving-into-loading-a-graph-from-a-file)
-
 * [Is there an example on how to generate protobuf files holding trained Tensorflow graphs](http://stackoverflow.com/questions/34343259/is-there-an-example-on-how-to-generate-protobuf-files-holding-trained-tensorflow?rq=1)
-
 * [How can I execute a TensorFlow graph from a protobuf in C++?](http://stackoverflow.com/questions/34353160/how-can-i-execute-a-tensorflow-graph-from-a-protobuf-in-c?rq=1)
-
 * [A Tool Developer's Guide to TensorFlow Model Files](https://www.tensorflow.org/versions/r0.9/how_tos/tool_developers/index.html#a-tool-developers-guide-to-tensorflow-model-files)
-
 * [Tensorflow APIs](https://www.tensorflow.org/versions/r0.9/api_docs/index.html)
-
 * [freeze_graph](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/tools/freeze_graph.py)
-
 * [tf_restore_graph.py](https://gist.github.com/nikitakit/6ef3b72be67b86cb7868)
+* [FineTune Overview](http://cs231n.github.io/transfer-learning/)
+
+
 
