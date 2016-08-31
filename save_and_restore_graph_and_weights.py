@@ -116,20 +116,12 @@ def restore_and_finetune():
     sess = tf.Session()
     # import saved graph from meta files
     saver = tf.train.import_meta_graph('weights/test.ckpt.meta')
-    # restore saved weights
-    saver.restore(sess, 'weights/test.ckpt')
+
     # get the variables/tensors/options added to collection
     x = tf.get_collection("input")[0]
     y = tf.get_collection("output")[0]
-    xx = [[4], [6], [7]]
-    print 'test saved network:'
-    print 'input is : ', xx
-    print 'output is : '
-    print sess.run(y, feed_dict={x: xx})
-
-    #y = tf.reshape(y,[-1,1])
-    print 'start retrain:'
-    #print y.get_shape()
+    #tf.stop_gradient(y)
+    print 'start finetune:'
     Ww = tf.Variable(tf.random_uniform([1], -1.0, 1.0))
     bb = tf.Variable(tf.zeros([1]))
     yy = tf.add(Ww * y, bb)
@@ -139,12 +131,21 @@ def restore_and_finetune():
     #note that var_list is the Variables you will optimize
     train_step = tf.train.GradientDescentOptimizer(0.01).minimize(loss,var_list=[Ww,bb])
 
+    #do not use initialize_all_variables if you want to keep previous weight unchanged
+    #sess.run(tf.initialize_variables([Ww,bb]))
+
+    #notice the order of initialize_all_variables and restore weights from checkpoint
+    sess.run(tf.initialize_all_variables())
+    # restore saved weights
+    saver.restore(sess, 'weights/test.ckpt')
+
+    xx = [[4], [6], [7]]
+    print 'test saved network:'
+    print 'input is : ', xx
+    print 'output is : '
+    print sess.run(y, feed_dict={x: xx})
     test_x = np.array([[0.], [1.], [2.]])
     test_y = np.array([[1.], [4.], [7.]])
-
-
-    #do not use initialize_all_variables if you want to keep previous weight unchanged
-    sess.run(tf.initialize_variables([Ww,bb]))
     for i in range(300):
         _, los = sess.run([train_step, loss], feed_dict={x: test_x, y_: test_y})
         if i % 30 == 0:
